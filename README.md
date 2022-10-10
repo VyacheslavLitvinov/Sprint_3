@@ -11,4 +11,4 @@
 3. test_transition_personal_area - тест перехода в личный кабинет
 4. test_transition_from_private_office_in_constructor - тест перехода в конструктор через личный кабинет
 5. test_logout - тест выхода из профиля
-6. test_section_constructor - тест перехода вкладок в конструкторе #
+6. test_section_constructor - тест перехода вкладок в конструкторе # 
