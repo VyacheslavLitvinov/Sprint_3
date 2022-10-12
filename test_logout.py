@@ -1,5 +1,5 @@
-import time
 from selenium import webdriver
+from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators_page import MainPage as MP
 from locators_page import LoginPage as LP
@@ -11,8 +11,7 @@ def test_logout_from_private_office_success():
     driver.maximize_window()
 
     driver.get(MP.url_main)
-
-    WebDriverWait(driver, 10)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
 
     button_main = driver.find_element(*MP.auth_button_main)
     button_main.click()
@@ -24,23 +23,49 @@ def test_logout_from_private_office_success():
 
     button_login = driver.find_element(*LP.auth_button_login)
     button_login.click()
-
-    time.sleep(1)
-    button_order = driver.find_element(*MP.order_button)
-    assert button_order.text == 'Оформить заказ'
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.fld_private))
 
     button_private = driver.find_element(*MP.fld_private)
-    assert button_private.text == 'Личный Кабинет'
     button_private.click()
-    time.sleep(1)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(PO.exit_button))
 
     logout_button = driver.find_element(*PO.exit_button)
-    assert logout_button.text == 'Выход'
     logout_button.click()
-    time.sleep(1)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(LP.log_fld))
 
     log_field = driver.find_element(*LP.log_fld)
     assert log_field.text == 'Вход'
+
+    driver.quit()
+
+
+def test_logout_from_private_office_url_success():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+
+    driver.get(MP.url_main)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
+
+    button_main = driver.find_element(*MP.auth_button_main)
+    button_main.click()
+
+    email_field = driver.find_element(*LP.fld_email)
+    email_field.send_keys(LP.test_email)
+    password_field = driver.find_element(*LP.fld_pass)
+    password_field.send_keys(LP.test_pass)
+
+    button_login = driver.find_element(*LP.auth_button_login)
+    button_login.click()
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.fld_private))
+
+    button_private = driver.find_element(*MP.fld_private)
+    button_private.click()
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(PO.exit_button))
+
+    logout_button = driver.find_element(*PO.exit_button)
+    logout_button.click()
+    WebDriverWait(driver, 3).until(expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/login'))
+
     assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
 
     driver.quit()

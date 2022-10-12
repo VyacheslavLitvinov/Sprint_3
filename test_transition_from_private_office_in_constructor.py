@@ -1,5 +1,5 @@
-import time
 from selenium import webdriver
+from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators_page import MainPage as MP
 from locators_page import LoginPage as LP
@@ -10,7 +10,7 @@ def test_transition_from_private_office_in_constructor_success():
     driver.maximize_window()
 
     driver.get(MP.url_main)
-    WebDriverWait(driver, 10)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
 
     button_main = driver.find_element(*MP.auth_button_main)
     button_main.click()
@@ -22,18 +22,13 @@ def test_transition_from_private_office_in_constructor_success():
 
     button_login = driver.find_element(*LP.auth_button_login)
     button_login.click()
-    time.sleep(1)
-
-    button_order = driver.find_element(*MP.order_button)
-    assert button_order.text == 'Оформить заказ'
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.fld_private))
 
     button_private = driver.find_element(*MP.fld_private)
-    assert button_private.text == 'Личный Кабинет'
     button_private.click()
-    time.sleep(1)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.constructor_button))
 
     constructor = driver.find_element(*MP.constructor_button)
-    assert constructor.text == 'Конструктор'
     constructor.click()
 
     assert driver.find_element(*MP.cook_burger).text == 'Соберите бургер'
@@ -46,8 +41,7 @@ def test_transition_from_private_office_in_constructor_through_burger_button_suc
     driver.maximize_window()
 
     driver.get(MP.url_main)
-
-    WebDriverWait(driver, 10)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
 
     button_main = driver.find_element(*MP.auth_button_main)
     button_main.click()
@@ -59,15 +53,11 @@ def test_transition_from_private_office_in_constructor_through_burger_button_suc
 
     button_login = driver.find_element(*LP.auth_button_login)
     button_login.click()
-
-    time.sleep(1)
-    button_order = driver.find_element(*MP.order_button)
-    assert button_order.text == 'Оформить заказ'
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.fld_private))
 
     button_private = driver.find_element(*MP.fld_private)
-    assert button_private.text == 'Личный Кабинет'
     button_private.click()
-    time.sleep(1)
+    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.burger_button))
 
     burger_button = driver.find_element(*MP.burger_button)
     burger_button.click()
