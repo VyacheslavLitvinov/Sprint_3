@@ -7,7 +7,6 @@ from locators_page import LoginPage as LP
 
 def test_transition_section_constructor_sauce_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -36,7 +35,6 @@ def test_transition_section_constructor_sauce_success():
 
 def test_transition_section_constructor_fillings_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -65,7 +63,6 @@ def test_transition_section_constructor_fillings_success():
 
 def test_transition_section_constructor_loaf_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))

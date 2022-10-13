@@ -8,7 +8,6 @@ from locators_page import PrivateOffice as PO
 
 def test_transition_personal_area_on_click_have_message():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -36,7 +35,6 @@ def test_transition_personal_area_on_click_have_message():
 
 def test_transition_personal_area_on_click_have_button_profile():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -64,7 +62,6 @@ def test_transition_personal_area_on_click_have_button_profile():
 
 def test_transition_personal_area_on_click_have_button_history():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -92,7 +89,6 @@ def test_transition_personal_area_on_click_have_button_history():
 
 def test_transition_personal_area_on_click_have_button_exit_button():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -120,7 +116,6 @@ def test_transition_personal_area_on_click_have_button_exit_button():
 
 def test_transition_personal_area_on_click_url_profile():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -139,8 +134,7 @@ def test_transition_personal_area_on_click_url_profile():
 
     button_private = driver.find_element(*MP.fld_private)
     button_private.click()
-    WebDriverWait(driver, 3).until(expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/account/profile'))
 
-    assert driver.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
+    assert WebDriverWait(driver, 3).until(expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/account/profile'))
 
     driver.quit()

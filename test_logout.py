@@ -8,7 +8,6 @@ from locators_page import PrivateOffice as PO
 
 def test_logout_from_private_office_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -41,7 +40,6 @@ def test_logout_from_private_office_success():
 
 def test_logout_from_private_office_url_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -64,8 +62,7 @@ def test_logout_from_private_office_url_success():
 
     logout_button = driver.find_element(*PO.exit_button)
     logout_button.click()
-    WebDriverWait(driver, 3).until(expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/login'))
 
-    assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
+    assert WebDriverWait(driver, 3).until(expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/login'))
 
     driver.quit()

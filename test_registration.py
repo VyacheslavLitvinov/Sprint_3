@@ -7,7 +7,6 @@ from locators_page import RegistrationPage as RP
 
 def test_registration_valid_data_success(generate_valid_password, generate_email):
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     # Переходим на сайт
     driver.get(LP.url_login)
@@ -40,7 +39,6 @@ def test_registration_valid_data_success(generate_valid_password, generate_email
 
 def test_registration_valid_data_url_login(generate_valid_password, generate_email):
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     # Переходим на сайт
     driver.get(LP.url_login)
@@ -61,9 +59,8 @@ def test_registration_valid_data_url_login(generate_valid_password, generate_ema
     # Нажимаем на кнопку зарегистрироваться
     registration_button = driver.find_element(*RP.reg_button)
     registration_button.click()
-    WebDriverWait(driver, 3).until(expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/login'))
 
-    assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
+    assert WebDriverWait(driver, 3).until(expected_conditions.url_to_be('https://stellarburgers.nomoreparties.site/login'))
 
     # Выходим из браузера
     driver.quit()
@@ -71,7 +68,6 @@ def test_registration_valid_data_url_login(generate_valid_password, generate_ema
 
 def test_registration_password_less_six_symbol_error(generate_email, generate_not_valid_password):
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     # Переходим на сайт
     driver.get(LP.url_login)
@@ -103,7 +99,6 @@ def test_registration_password_less_six_symbol_error(generate_email, generate_no
 
 def test_registration_password_less_six_symbol_url_register(generate_email, generate_not_valid_password):
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     # Переходим на сайт
     driver.get(LP.url_login)

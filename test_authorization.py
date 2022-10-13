@@ -9,7 +9,6 @@ from locators_page import ForgotPage as FP
 
 def test_authorization_on_main_page_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.auth_button_main))
@@ -35,7 +34,6 @@ def test_authorization_on_main_page_success():
 
 def test_authorization_on_private_office_page_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.fld_private))
@@ -61,7 +59,6 @@ def test_authorization_on_private_office_page_success():
 
 def test_authorization_on_registration_page_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.fld_private))
@@ -93,7 +90,6 @@ def test_authorization_on_registration_page_success():
 
 def test_authorization_on_recovery_page_success():
     driver = webdriver.Chrome()
-    driver.maximize_window()
 
     driver.get(MP.url_main)
     WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable(MP.fld_private))
