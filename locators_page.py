@@ -18,7 +18,7 @@ class MainPage:
     scroll = "arguments[0].scrollIntoView();" # скрипт для скролла
     user_sauce = By.XPATH, '(//*[contains(@class, "BurgerIngredient_ingredient")])[16]' # выбираемый соус для теста
     user_fillings = By.XPATH, '(//*[contains(@class, "BurgerIngredient_ingredient")])[71]' # выбираемая начинка для теста
-    active_element_constructor = By.XPATH, '//div[@class= "tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect"]//*'  # активная кнопка в кнострукторе
+    active_element_constructor = By.XPATH, '//div[contains(@class, "tab_tab_type_current")]//*'  # активная кнопка в кнострукторе
 
 
 

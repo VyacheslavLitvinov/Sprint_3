@@ -25,7 +25,7 @@ def test_transition_section_constructor_sauce_success():
 
     element_sauce = driver.find_element(*MP.user_sauce)
     driver.execute_script(MP.scroll, element_sauce)
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(MP.user_sauce))
+    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(MP.active_element_constructor))
 
     transition_sauce = driver.find_element(*MP.active_element_constructor)
     assert transition_sauce.text == 'Соусы'
@@ -53,7 +53,7 @@ def test_transition_section_constructor_fillings_success():
 
     element_fillings = driver.find_element(*MP.user_fillings)
     driver.execute_script(MP.scroll, element_fillings)
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(MP.user_fillings))
+    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(MP.active_element_constructor))
 
     transition_fillings = driver.find_element(*MP.active_element_constructor)
     assert transition_fillings.text == 'Начинки'
@@ -83,7 +83,7 @@ def test_transition_section_constructor_loaf_success():
 
     element_loaf = driver.find_element(*MP.user_loaf)
     driver.execute_script(MP.scroll, element_loaf)
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(MP.user_loaf))
+    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(MP.active_element_constructor))
 
     transition_loaf = driver.find_element(*MP.active_element_constructor)
     assert transition_loaf.text == 'Булки'
