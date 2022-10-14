@@ -14,10 +14,10 @@ class MainPage:
     sauce = By.XPATH, '//section[1]/div[1]/div[2]/span' # кнопка "Соусы" конструктора на главной странице
     loaf = By.XPATH, '//section[1]/div[1]/div[1]/span' # кнопка "Булки" конструктора на главной странице
     orders = By.XPATH, '//li[2]/a/p' # кнопка "Лента заказов" на главной странице
-    user_loaf = By.XPATH, '//img[@alt= "Флюоресцентная булка R2-D3"]' # выбираемая булочка для теста
+    user_loaf = By.XPATH, '(//*[contains(@class, "BurgerIngredient_ingredient")])[1]' # выбираемая булочка для теста
     scroll = "arguments[0].scrollIntoView();" # скрипт для скролла
-    user_sauce = By.XPATH, '//img[@alt= "Соус фирменный Space Sauce"]' # выбираемый соус для теста
-    user_fillings = By.XPATH, '//img[@alt= "Сыр с астероидной плесенью"]' # выбираемая начинка для теста
+    user_sauce = By.XPATH, '(//*[contains(@class, "BurgerIngredient_ingredient")])[16]' # выбираемый соус для теста
+    user_fillings = By.XPATH, '(//*[contains(@class, "BurgerIngredient_ingredient")])[71]' # выбираемая начинка для теста
     active_element_constructor = By.XPATH, '//div[@class= "tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect"]//*'  # активная кнопка в кнострукторе
 
 
